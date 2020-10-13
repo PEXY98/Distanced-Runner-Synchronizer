@@ -1,0 +1,38 @@
+int tapticMotor = 3;
+int control = 5;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(control, INPUT);
+  pinMode(tapticMotor, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  while (digitalRead(control) == 0) {
+    digitalWrite(tapticMotor, LOW);
+  }
+  while (digitalRead(control) == 1) {
+
+    digitalWrite(tapticMotor, HIGH);
+    for (int i = 0; i < 20; i++) {
+      delay(5);
+      if (digitalRead(control) == 0) {
+        break;
+        digitalWrite(tapticMotor, LOW);
+      }
+    }
+
+    digitalWrite(tapticMotor, LOW);
+    for (int i = 0; i < 300; i++) {
+      delay(5);
+      if (digitalRead(control) == 0) {
+        break;
+        digitalWrite(tapticMotor, LOW);
+      }
+    }
+  }
+}
+
+//Yi Xie
